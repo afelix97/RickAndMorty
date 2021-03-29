@@ -1,0 +1,17 @@
+<div>
+    <button (click)="option = !option">cambiar</button>
+</div>
+<section class="container" *ngIf="!option">
+    <ul class="episodes__list">
+        <li *ngFor="let eposodio of eposodios$ | async">
+            {{eposodio.episode}} - {{eposodio.name}}
+        </li>
+    </ul>
+</section>
+<section class="container" *ngIf="option">
+    <ul class="episodes__list">
+        <li *ngFor="let caracter of caracteres$ | async">
+            {{caracter.id}} - {{caracter.name}}
+        </li>
+    </ul>
+</section>

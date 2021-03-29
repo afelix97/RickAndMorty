@@ -1,8 +1,17 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@app/*":["./src/app/*"],
+      "@pages/*":["./src/app/@pages/*"],
+      "@components/*":["./src/app/components/*"],
+      "@global/*":["./src/app/global/*"],
+      "@helpers/*":["./src/app/helpers/*"],
+      "@services/*":["./src/app/services/*"],
+      "@assets/*":["./src/assets/*"],
+      "@environments/*":["./src/environments/*"]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -14,8 +23,10 @@
     "module": "es2020",
     "lib": [
       "es2018",
-      "dom"
-    ]
+      "dom",
+      "esnext.asynciterable"
+    ],
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false
