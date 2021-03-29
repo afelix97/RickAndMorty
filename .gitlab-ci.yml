@@ -1,0 +1,23 @@
+## YAML Template.
+---
+stages:
+  - sonarQube
+
+sonar:
+  image: harbor.coppel.io/library/sonar-scanner:3.2.0
+  stage: sonarQube
+  tags:
+    - docker
+  script:
+    - export NODE_PATH=$NODE_PATH:`npm root -g`
+    - sonar-scanner
+  only:
+    refs:
+      - merge_requests
+    variables:
+      - $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"
+      - $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop"
+      - $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "release"
+      - $CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /d-[a-zA-Z0-9.]{1,8}[-_]{1}[a-zA-Z0-9-_]{1,10}/
+  except:
+    - branches
