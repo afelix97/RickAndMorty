@@ -11,7 +11,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
   ]
 })
 export class HomeModule { }
